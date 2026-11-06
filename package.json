@@ -1,0 +1,26 @@
+{
+  "name": "c7one-lms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "C7one Lead Management System - Phase 1 (walk-in registration and reception desk)",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "create-admin": "node scripts/create-superadmin.js",
+    "reset-password": "node scripts/reset-password.js",
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "express": "^5.3.0",
+    "helmet": "^8.3.0",
+    "nodemailer": "^10.3.1",
+    "qrcode": "^1.5.4",
+    "zod": "^4.6.7"
+  }
+}

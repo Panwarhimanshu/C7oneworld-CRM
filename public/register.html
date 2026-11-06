@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Visitor Registration</title>
+  <link rel="icon" href="/assets/img/logo-48.png" type="image/png">
+  <link rel="stylesheet" href="/assets/css/core.css">
+  <link rel="stylesheet" href="/assets/css/register.css">
+  <script type="module" src="/assets/js/register.js"></script>
+</head>
+<body>
+  <div class="reg-layout">
+    <aside class="reg-aside">
+      <div class="reg-brand">
+        <img src="/assets/img/logo-96.png" alt="" width="36" height="36">
+        <span data-org-name>C7oneworld Solutions Private Limited</span>
+      </div>
+      <div class="reg-aside-body">
+        <img class="reg-hero-logo" src="/assets/img/logo-256.png" alt="C7oneworld" width="112" height="112">
+        <h1>Visitor registration</h1>
+        <p>Register your visit and one of our counselors will meet you shortly.</p>
+        <ol class="reg-steps" aria-label="Registration steps">
+          <li data-step="details" class="is-current"><span>1</span>Your details</li>
+          <li data-step="verify"><span>2</span>Verify your contact</li>
+          <li data-step="done"><span>3</span>Meet your counselor</li>
+        </ol>
+      </div>
+      <div class="reg-aside-foot">
+        <p class="reg-tagline">Your World, Our Guidance.</p>
+        <p>Your details are used only to assist with your enquiry.</p>
+      </div>
+    </aside>
+
+    <main class="reg-main">
+      <div class="reg-card">
+        <noscript><div class="alert alert-error">Please enable JavaScript to use this form, or ask the reception desk for help.</div></noscript>
+
+        <!-- Step 1: details -->
+        <section id="step-details" aria-labelledby="details-title">
+          <header class="reg-card-head">
+            <p class="reg-kicker">Step 1 of 2</p>
+            <h2 id="details-title">Tell us about yourself</h2>
+          </header>
+
+          <div class="alert alert-error" id="details-error" role="alert" hidden></div>
+
+          <form id="details-form" novalidate autocomplete="on">
+            <div class="field" data-field="fullName">
+              <label class="label" for="fullName">Full name</label>
+              <input class="input input-lg" id="fullName" name="fullName" type="text" autocomplete="name"
+                     maxlength="100" required autocapitalize="words" spellcheck="false">
+              <p class="field-error" hidden></p>
+            </div>
+
+            <div class="field" data-field="email">
+              <label class="label" for="email">Email address</label>
+              <input class="input input-lg" id="email" name="email" type="email" autocomplete="email"
+                     inputmode="email" maxlength="254" required spellcheck="false" autocapitalize="off">
+              <p class="field-error" hidden></p>
+            </div>
+
+            <div class="field" data-field="mobile">
+              <label class="label" for="mobile">Mobile number</label>
+              <div class="phone-group">
+                <label class="sr-only" for="countryCode">Country code</label>
+                <select class="select input-lg" id="countryCode" name="countryCode" autocomplete="tel-country-code">
+                  <option value="91">+91 IN</option>
+                  <option value="1">+1 US/CA</option>
+                  <option value="44">+44 UK</option>
+                  <option value="61">+61 AU</option>
+                  <option value="64">+64 NZ</option>
+                  <option value="353">+353 IE</option>
+                  <option value="49">+49 DE</option>
+                  <option value="33">+33 FR</option>
+                  <option value="971">+971 AE</option>
+                  <option value="65">+65 SG</option>
+                  <option value="977">+977 NP</option>
+                  <option value="880">+880 BD</option>
+                  <option value="94">+94 LK</option>
+                </select>
+                <input class="input input-lg" id="mobile" name="mobile" type="tel" autocomplete="tel-national"
+                       inputmode="numeric" maxlength="15" required>
+              </div>
+              <p class="field-error" hidden></p>
+            </div>
+
+            <fieldset class="field channel-field" data-field="channel" hidden>
+              <legend class="label">Send my verification code by</legend>
+              <div class="segmented">
+                <label><input type="radio" name="channel" value="sms" checked><span>SMS to mobile</span></label>
+                <label><input type="radio" name="channel" value="email"><span>Email</span></label>
+              </div>
+            </fieldset>
+
+            <div class="hp" aria-hidden="true">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block reg-submit" type="submit">Continue</button>
+            <p class="reg-consent">By continuing, you agree that <span data-org-name>C7oneworld Solutions Private Limited</span> may contact you about your enquiry.</p>
+          </form>
+        </section>
+
+        <!-- Step 2: OTP -->
+        <section id="step-verify" aria-labelledby="verify-title" hidden>
+          <header class="reg-card-head">
+            <p class="reg-kicker">Step 2 of 2</p>
+            <h2 id="verify-title">Enter verification code</h2>
+            <p class="reg-sub">We sent a <span id="otp-length">6</span>-digit code to <strong id="otp-destination"></strong>.
+              <button type="button" class="btn-link" id="change-details">Change</button></p>
+          </header>
+
+          <div class="alert" id="verify-alert" role="alert" hidden></div>
+
+          <form id="verify-form" novalidate>
+            <div class="field" data-field="code">
+              <label class="label" for="code">Verification code</label>
+              <input class="input otp-input" id="code" name="code" type="text" inputmode="numeric"
+                     autocomplete="one-time-code" pattern="[0-9]*" maxlength="8" required>
+              <p class="field-error" hidden></p>
+            </div>
+            <button class="btn btn-primary btn-lg btn-block reg-submit" type="submit">Verify and register</button>
+          </form>
+
+          <div class="resend-row">
+            <span id="resend-label">Didn't receive the code?</span>
+            <button type="button" class="btn-link" id="resend-btn" disabled>Resend code</button>
+            <span class="muted" id="resend-timer"></span>
+          </div>
+        </section>
+
+        <!-- Step 3: done -->
+        <section id="step-done" class="reg-done" aria-live="polite" hidden>
+          <div class="done-mark" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h2 id="done-title">Thank you for registering</h2>
+          <p class="reg-sub">Please take a seat. A counselor will connect with you shortly.</p>
+          <button type="button" class="btn btn-lg" id="new-registration">Register another visitor</button>
+          <p class="muted done-reset" id="done-reset"></p>
+        </section>
+
+        <!-- Terminal: session ended -->
+        <section id="step-ended" class="reg-done" hidden>
+          <h2>Let's try that again</h2>
+          <p class="reg-sub" id="ended-message"></p>
+          <button type="button" class="btn btn-primary btn-lg" id="restart">Start again</button>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
